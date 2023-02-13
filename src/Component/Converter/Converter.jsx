@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -8,11 +10,17 @@ function Converter() {
   const [currency, setCurrency] = useState([]);
   const [from, setFrom] = useState('USD');
   const [to, setTo] = useState('');
+  const [showForm, setShowForm] = useState(true);
+
+  const toggleForm = () => {
+    setShowForm((prev) => !prev);
+  };
+
   // const [output, setOutput] = useState(0);
   const [amounts, setAmounts] = useState({
-    USD: { amnt: 100, sign: 'USD' },
-    EUR: { amnt: 500, sign: 'EUR' },
-    XAF: { amnt: 1000, sign: 'XAF' },
+    USD: { amnt: 0, sign: 'USD' },
+    EUR: { amnt: 0, sign: 'EUR' },
+    XAF: { amnt: 0, sign: 'XAF' },
   });
 
   const options = { method: 'GET', headers: { accept: 'application/json' } };
@@ -34,10 +42,17 @@ function Converter() {
   //   setTo(swapp);
   // }
 
-  function handleSubmit(departureCurrency, arrivalCurrency, amount) {
+  const handleSubmitTopUP = (AMT, currSign) => {
+    const Holder = amounts;
+    Holder[currSign].amnt += AMT;
+    setAmounts(Holder);
+  };
+
+  function handleConversion(departureCurrency, arrivalCurrency, amount) {
     if (
       amount <= amounts[departureCurrency].amnt &&
-      arrivalCurrency !== departureCurrency
+      arrivalCurrency !== departureCurrency &&
+      amount >= 0
     ) {
       const result =
         (amount / currency.results[departureCurrency]) *
@@ -45,66 +60,122 @@ function Converter() {
 
       const newAmount = amounts;
 
+      console.log('this results', typeof result);
+
       newAmount[departureCurrency].amnt -= amount;
-      newAmount[arrivalCurrency].amnt += result.toFixed(2);
+      newAmount[arrivalCurrency].amnt += +result.toFixed(1);
+
+      console.log('this newAmount', newAmount[arrivalCurrency].amnt);
 
       setAmounts({ ...newAmount });
     } else {
-      alert('ERROR!');
+      if (amount > amounts[departureCurrency].amnt) {
+        alert('ERROR! Insufficient balance');
+      }
+      if (arrivalCurrency === departureCurrency) {
+        alert('ERROR! Redundant conversion');
+      } else {
+        alert('ERROR! Will not convert negative funds');
+      }
     }
   }
 
   return (
-    <form
-      className="currency-container"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit(
-          e.target.elements.from.value,
-          e.target.elements.to.value,
-          e.target.elements.amount.value
-        );
-      }}
-    >
-      <h1> CURRENCY-WALLET</h1>
-      <div>
-        <h3>TOTAL-BALANCE</h3>
-      </div>
-      <div className="currencies">
-        <div className="currency-one">
-          <h1>
-            {amounts.USD.amnt} {amounts.USD.sign}
-          </h1>
+    <>
+      {showForm && (
+        <div className="form-overlay">
+          <form
+            className=" topup-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmitTopUP(
+                +e.target.elements.Amount.value,
+                e.target.elements.Currency.value
+              );
+              console.log('this e', e);
+              toggleForm();
+            }}
+          >
+            <button type="button" onClick={toggleForm}>
+              Cancel
+            </button>
+            <label htmlFor="Amout">Input Amount</label>
+            <div className="input-div">
+              <input
+                type="number"
+                autoFocus
+                step="any"
+                id="Amount"
+                placeholder="Input Amount to topUP"
+              />
+              <select id="Currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="XAF">XAF</option>
+              </select>
+            </div>
+            <button type="submit">topUP</button>
+          </form>
         </div>
-        <i className="fa-sharp fa-solid fa-people-arrows" />
+      )}
 
-        <div className="currency-two">
-          <h1>
-            {amounts.EUR.amnt} {amounts.EUR.sign}
-          </h1>
+      <form
+        className="currency-container"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleConversion(
+            e.target.elements.from.value,
+            e.target.elements.to.value,
+            +e.target.elements.amount.value
+          );
+        }}
+      >
+        <h1> CURRENCY-WALLET</h1>
+        <div className="balance-holder">
+          <div className="balace">
+            <h3>TOTAL-BALANCE</h3>
+            <p>{amounts.USD.amnt}</p>
+          </div>
+          <button className="showform-btn" type="button" onClick={toggleForm}>
+            topUP
+          </button>
         </div>
-        <i className="fa-sharp fa-solid fa-people-arrows" />
+        <div className="currencies">
+          <div className="currency-one">
+            <h1>
+              {amounts.USD.amnt} {amounts.USD.sign}
+            </h1>
+          </div>
+          <i className="fa-sharp fa-solid fa-people-arrows" />
 
-        <div className="currency-three">
-          <h1>
-            {amounts.XAF.amnt} {amounts.XAF.sign}
-          </h1>
+          <div className="currency-two">
+            <h1>
+              {amounts.EUR.amnt} {amounts.EUR.sign}
+            </h1>
+          </div>
+          <i className="fa-sharp fa-solid fa-people-arrows" />
+
+          <div className="currency-three">
+            <h1>
+              {amounts.XAF.amnt} {amounts.XAF.sign}
+            </h1>
+          </div>
         </div>
-      </div>
-      <p>
-        <input id="amount" type="number" placeholder="amount" />
-      </p>
-      <div className="currency-header">
-        <h2>From</h2>
-        <input id="from" type="text" placeholder="currency" />
-        <h2>To</h2>
-        <input id="to" type="text" placeholder="currency" />
-      </div>
-      <div className="converter">
-        <button type="submit">Convert</button>
-        <p> </p>
-      </div>
-    </form>
+        <p>
+          <input id="amount" type="number" placeholder="amount" />
+        </p>
+        <div className="currency-header">
+          <h2>From</h2>
+          <input id="from" type="text" placeholder="currency" />
+          <h2>To</h2>
+          <input id="to" type="text" placeholder="currency" />
+        </div>
+        <div className="converter">
+          <button type="submit">Convert</button>
+          <p> </p>
+        </div>
+      </form>
+    </>
   );
 }
 

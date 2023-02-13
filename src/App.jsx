@@ -8,7 +8,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Converter />} />
+          <Route index element={<Converter currency="USD" value={2000} />} />
         </Routes>
       </BrowserRouter>
     </div>

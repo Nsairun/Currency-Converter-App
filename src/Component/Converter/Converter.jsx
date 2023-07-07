@@ -81,7 +81,7 @@ function Converter() {
   }
 
   return (
-    <>
+    <div className="currency-container">
       {showForm && (
         <div className="form-overlay">
           <form
@@ -130,30 +130,41 @@ function Converter() {
           );
         }}
       >
-        <h1> CURRENCY-WALLET</h1>
-        <div className="balance-holder">
-          <div className="balance">
-            <h3>TOTAL-BALANCE</h3>
-            <p>{amounts.USD.amnt}</p>
+        <div id="balanceSection">
+          <h1> CURRENCY-WALLET</h1>
+          <div className="balance-holder">
+            <div className="balance">
+              <h3>BALANCE:</h3>
+              <p>{amounts.USD.amnt}</p>
+            </div>
+            <button className="showform-btn" type="button" onClick={toggleForm}>
+              topUP
+            </button>
           </div>
-          <button className="showform-btn" type="button" onClick={toggleForm}>
-            topUP
-          </button>
         </div>
         <div className="currencies">
           <div className="currency-one">
+            <div className="flag">
+              <h2>USA</h2>
+            </div>
             <h1>
               {amounts.USD.amnt} {amounts.USD.sign}
             </h1>
           </div>
 
           <div className="currency-two">
+            <div className="flag">
+              <h2>USA</h2>
+            </div>
             <h1>
               {amounts.EUR.amnt} {amounts.EUR.sign}
             </h1>
           </div>
 
           <div className="currency-three">
+            <div className="flag">
+              <h2>USA</h2>
+            </div>
             <h1>
               {amounts.XAF.amnt} {amounts.XAF.sign}
             </h1>
@@ -175,7 +186,7 @@ function Converter() {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

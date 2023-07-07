@@ -5,6 +5,14 @@ body {
   padding: 0;
 }
 
+.currency-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
 .form-overlay {
   position: fixed;
   background-color: #cccccc79;
@@ -87,44 +95,59 @@ body {
 
 /* topUP styles end here */
 
-h1 {
-  background: #fff;
+#balanceSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  width: 100%;
+  top: 0;
+}
+
+#balanceSection h1 {
+  background: #ffffff63;
+  color: #fff;
   padding: 5px;
+  border-radius: 10px;
 }
 
 .balance-holder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: fit-content;
-  min-width: (300px, 100%);
-  gap: 1rem;
-  margin: 1rem auto 2rem;
-}
-
-.balance-holder .balance {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fbfbfc;
   width: 100%;
+  min-width: min(400px, 100%);
+  gap: 1rem;
+  padding: 10px;
 }
 
 .balance p {
   width: 100%;
 }
 
-.balance-holder .showform-btn {
-  width: fit-content;
-  height: fit-content;
-  padding: 15px 10px;
+#balanceSection button {
+  width: min(75px, 100%);
+  height: min(35px, 100%);
+  padding: min(15px 10px);
+  background: transparent;
   border-radius: 5px;
-  border: none;
-  color: #cdd7f7;
-  background: #070707;
+  color: #fff;
   font-weight: 600;
-  margin: 0;
+  box-shadow: 3px 5px 10px #ffffffa9;
+  border: none;
+  cursor: pointer;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: min(190px, 100%);
+  font-size: 15px;
+  padding: 10px;
+  color: #fff;
 }
 
 .currencies {
@@ -146,51 +169,17 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-.currency-one {
-  background-image: url('../../images/dollar.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 18vh;
-  width: 13vw;
-  max-width: 16vw;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 10px 20px 30px rgba(10, 10, 10, 0.534);
-  border-radius: 5px;
-  border: 2px solid #fff;
-  padding: 15px;
-}
-
-.currency-two {
-  background-image: url('../../images/Eur.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 18vh;
-  width: 13vw;
-  max-width: 16vw;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 10px 20px 30px #08dafaa8;
-  border-radius: 5px;
-  border: 2px solid #fff;
-  padding: 5px;
-}
-
+.currency-one,
+.currency-two,
 .currency-three {
-  background-image: url('../../images/old-central-african-money-business-background_52793-892.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 18vh;
-  width: 13vw;
-  max-width: 16vw;
+  display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   position: relative;
-  box-shadow: 10px 20px 30px rgba(7, 7, 7, 0.589);
+  box-shadow: 10px 20px 30px #0a0a0a88;
   border-radius: 5px;
-  border: 2px solid #fff;
+  color: #fff;
   padding: 5px;
 }
 
@@ -241,11 +230,11 @@ h1 {
   justify-content: right;
 }
 
-.currency-container button {
+/* .currency-container button {
   height: fit-content;
   width: fit-content;
   padding: 5px;
   background: #03fc39;
   border-radius: 7px;
   margin-top: 20%;
-}
+} */

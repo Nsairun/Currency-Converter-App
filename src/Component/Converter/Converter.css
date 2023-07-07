@@ -1,219 +1,251 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
 
-
 body {
-    margin: 0;
-    padding: 0;
+  margin: auto;
+  padding: 0;
 }
 
 .form-overlay {
-    position: fixed;
-    background-color: #cccccc79;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
+  position: fixed;
+  background-color: #cccccc79;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .form-overlay .topup-form {
-    background-color: #000;
-    position: relative;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 98vw;
-    max-width: 400px;
-    border-radius: 7px;
-    padding: 1rem 12px;
+  background-color: #000;
+  position: relative;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 98vw;
+  max-width: 400px;
+  border-radius: 7px;
+  padding: 1rem 12px;
 }
 
 .topup-form label {
-    width: 100%;
-    font-size: 1.3rem;
-    margin: 1rem 0;
+  width: 100%;
+  font-size: 1.3rem;
+  margin: 1rem 0;
 }
 
 .topup-form .input-div {
-    background-color: brown;
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
+  background-color: #161616a1;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .input-div input {
-    width: 100%;
-    font-size: 1.2rem;
-    padding: 10px;
-    margin: 0;
-    border: 2px solid grey;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 10px;
+  margin: 0;
+  border: 2px solid grey;
 }
 
 .input-div select {
-    font-size: 1.2rem;
-    border: none;
-    width: 70px;
+  font-size: 1.2rem;
+  border: none;
+  width: 70px;
 }
 
 .topup-form button:nth-of-type(1) {
-    background-color: #a52a2a;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 1rem;
-    width: fit-content;
-    height: fit-content;
-    padding: 10px 5px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
+  background-color: #fc0808fa;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
 }
 
 .topup-form button:nth-of-type(2) {
-    margin: 1rem;
-    width: fit-content;
-    height: fit-content;
-    padding: 10px 5px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    align-self: flex-end;
+  margin: 1rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 5px;
+  border: none;
+  color: #008000;
+  border-radius: 5px;
+  font-weight: 600;
+  align-self: flex-end;
 }
 
 /* topUP styles end here */
 
-.currency-container .balance-holder {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: fit-content;
-    min-width: 300px;
-    margin: 1rem auto 2rem;
+h1 {
+  background: #fff;
+  padding: 5px;
+}
+
+.balance-holder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  min-width: (300px, 100%);
+  gap: 1rem;
+  margin: 1rem auto 2rem;
 }
 
 .balance-holder .balance {
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fbfbfc;
+  width: 100%;
+}
+
+.balance p {
+  width: 100%;
 }
 
 .balance-holder .showform-btn {
-    width: fit-content;
-    height: fit-content;
-    padding: 15px 10px;
-    border-radius: 5px;
-    border: none;
-    font-weight: 600;
-    margin: 0;
+  width: fit-content;
+  height: fit-content;
+  padding: 15px 10px;
+  border-radius: 5px;
+  border: none;
+  color: #cdd7f7;
+  background: #070707;
+  font-weight: 600;
+  margin: 0;
 }
 
 .currencies {
-    display: flex;
-    /* background-color: #000; */
-    align-items: center;
-    justify-content: center;
-    font-size: larger;
-    font-weight: 700;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 500;
+  gap: 2rem;
+  padding: 5px;
 }
 
 .currencies i {
-    color: #151e20;
-    font:700;
-    font-size: larger;
-    height: 30px;
-    width: 20px;
-    align-items: center;
-    justify-content: center;
+  color: #01161b;
+  font: 100px;
+  font-size: larger;
+  height: 30px;
+  width: 20px;
+  align-items: center;
+  justify-content: center;
 }
 .currency-one {
-    background-image: url('../../images/dollar.jpg');
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 15vh;
-    width: 17vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 10px 20px 30px brown;
-    border-radius: 5px;
+  background-image: url('../../images/dollar.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 18vh;
+  width: 13vw;
+  max-width: 16vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 10px 20px 30px rgba(10, 10, 10, 0.534);
+  border-radius: 5px;
+  border: 2px solid #fff;
+  padding: 15px;
 }
 
 .currency-two {
-    background-image: url('../../images/Eur.jpg');
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 15vh;
-    width: 17vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 10px 20px 30px #08dafa;
-    border-radius: 5px;
+  background-image: url('../../images/Eur.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 18vh;
+  width: 13vw;
+  max-width: 16vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 10px 20px 30px #08dafaa8;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  padding: 5px;
 }
 
 .currency-three {
-    background-image: url('../../images/old-central-african-money-business-background_52793-892.jpg');
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 15vh;
-    width: 17vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 10px 20px 30px brown;
-    border-radius: 5px;
-
+  background-image: url('../../images/old-central-african-money-business-background_52793-892.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 18vh;
+  width: 13vw;
+  max-width: 16vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 10px 20px 30px rgba(7, 7, 7, 0.589);
+  border-radius: 5px;
+  border: 2px solid #fff;
+  padding: 5px;
 }
 
 .currency-container {
-    margin: 0 auto;
-    text-align: center;
-    height: 860px;
-    width: 1400px;
-    background-color: #000b0b;
-    color: #022b2b;
-    border-radius: 10%;
-    border: 2px solid saddlebrown;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url('../../images/chart-graph-business-finance.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+  height: 750px;
+  width: 800px;
+  background-color: #000b0b8e;
+  color: #0f0901;
+  border-radius: 10px;
+  border: 2px solid rgba(139, 69, 19, 0.623);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.currency-header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.maincurrency-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  padding: 5px;
 }
 
-.currency-container input  {
-    height: 5vh;
-    width: 15vw;
-    border: 2px solid #5599f7;
-    border-radius: 5px;
-    background-color: black;
-    color: #eff2f4;
-    font-weight: 600;
-    font-style: oblique;
-    font-stretch: expanded;
-    font-size: larger;
-    display: flex;
-    align-items: center;
-    justify-content: right;
+.currency-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.currency-container input {
+  height: 15vh;
+  width: 20vw;
+  border: 2px solid #5599f7;
+  border-radius: 5px;
+  background-color: black;
+  color: #eff2f4;
+  font-weight: 600;
+  font-style: oblique;
+  font-stretch: expanded;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }
 
 .currency-container button {
-    height: 6vh;
-    width: 6vw;
-    background: #cdd7f7;
-    border-radius: 7px;
-    margin-top: 20%;
+  height: fit-content;
+  width: fit-content;
+  padding: 5px;
+  background: #03fc39;
+  border-radius: 7px;
+  margin-top: 20%;
 }

@@ -132,7 +132,7 @@ function Converter() {
       >
         <h1> CURRENCY-WALLET</h1>
         <div className="balance-holder">
-          <div className="balace">
+          <div className="balance">
             <h3>TOTAL-BALANCE</h3>
             <p>{amounts.USD.amnt}</p>
           </div>
@@ -146,14 +146,12 @@ function Converter() {
               {amounts.USD.amnt} {amounts.USD.sign}
             </h1>
           </div>
-          <i className="fa-sharp fa-solid fa-people-arrows" />
 
           <div className="currency-two">
             <h1>
               {amounts.EUR.amnt} {amounts.EUR.sign}
             </h1>
           </div>
-          <i className="fa-sharp fa-solid fa-people-arrows" />
 
           <div className="currency-three">
             <h1>
@@ -161,18 +159,20 @@ function Converter() {
             </h1>
           </div>
         </div>
-        <p>
-          <input id="amount" type="number" placeholder="amount" />
-        </p>
-        <div className="currency-header">
-          <h2>From</h2>
-          <input id="from" type="text" placeholder="currency" />
-          <h2>To</h2>
-          <input id="to" type="text" placeholder="currency" />
-        </div>
-        <div className="converter">
-          <button type="submit">Convert</button>
-          <p> </p>
+        <div className="maincurrency-holder">
+          <p>
+            <input id="amount" type="number" placeholder="amount" />
+          </p>
+          <div className="currency-header">
+            <h2>From:</h2>
+            <input id="from" type="text" placeholder="currency" />
+            <h2>To:</h2>
+            <input id="to" type="text" placeholder="currency" />
+          </div>
+          <div className="converter">
+            <button type="submit">Convert</button>
+            <p> </p>
+          </div>
         </div>
       </form>
     </>

@@ -5,6 +5,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import './Converter.css';
+import {
+  FcCurrencyExchange,
+  FcMoneyTransfer,
+  FcDownRight,
+  FcDownLeft,
+} from 'react-icons/fc';
 
 function Converter() {
   const [currency, setCurrency] = useState([]);
@@ -134,9 +140,13 @@ function Converter() {
           <h1> CURRENCY-WALLET</h1>
           <div className="balance-holder">
             <div className="balance">
-              <h3>BALANCE:</h3>
+              <h2>BALANCE</h2>
               <p>{amounts.USD.amnt}</p>
             </div>
+            <p>
+              <FcCurrencyExchange />
+              <FcMoneyTransfer />
+            </p>
             <button className="showform-btn" type="button" onClick={toggleForm}>
               topUP
             </button>
@@ -144,26 +154,33 @@ function Converter() {
         </div>
         <div className="currencies">
           <div className="currency-one">
-            <div className="flag">
-              <h2>USA</h2>
+            <div className="flag1">
+              <h2> USA </h2>
             </div>
             <h1>
               {amounts.USD.amnt} {amounts.USD.sign}
             </h1>
           </div>
-
+          <h1>
+            <FcDownRight />
+            <FcDownLeft />
+          </h1>
           <div className="currency-two">
-            <div className="flag">
-              <h2>USA</h2>
+            <div className="flag2">
+              <h2>EUR</h2>
             </div>
             <h1>
               {amounts.EUR.amnt} {amounts.EUR.sign}
             </h1>
           </div>
+          <h1>
+            <FcDownRight />
+            <FcDownLeft />
+          </h1>
 
           <div className="currency-three">
-            <div className="flag">
-              <h2>USA</h2>
+            <div className="flag3">
+              <h2>XAF</h2>
             </div>
             <h1>
               {amounts.XAF.amnt} {amounts.XAF.sign}
@@ -171,14 +188,13 @@ function Converter() {
           </div>
         </div>
         <div className="maincurrency-holder">
+          <h1>Convert Below</h1>
           <p>
             <input id="amount" type="number" placeholder="amount" />
           </p>
           <div className="currency-header">
-            <h2>From:</h2>
-            <input id="from" type="text" placeholder="currency" />
-            <h2>To:</h2>
-            <input id="to" type="text" placeholder="currency" />
+            <input id="from" type="text" placeholder="from" />
+            <input id="to" type="text" placeholder="to" />
           </div>
           <div className="converter">
             <button type="submit">Convert</button>

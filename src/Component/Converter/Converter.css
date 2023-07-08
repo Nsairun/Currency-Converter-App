@@ -5,14 +5,6 @@ body {
   padding: 0;
 }
 
-.currency-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-
 .form-overlay {
   position: fixed;
   background-color: #cccccc79;
@@ -95,6 +87,27 @@ body {
 
 /* topUP styles end here */
 
+.currency-container {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.116),
+    rgba(3, 3, 3, 0.973)
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: min(20px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 5px 10px #070707a9;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
 #balanceSection {
   display: flex;
   flex-direction: column;
@@ -106,8 +119,8 @@ body {
 }
 
 #balanceSection h1 {
-  background: #ffffff63;
-  color: #fff;
+  background: #fff;
+  color: #000;
   padding: 5px;
   border-radius: 10px;
 }
@@ -119,7 +132,7 @@ body {
   width: 100%;
   min-width: min(400px, 100%);
   gap: 1rem;
-  padding: 10px;
+  padding: 20px;
 }
 
 .balance p {
@@ -127,9 +140,8 @@ body {
 }
 
 #balanceSection button {
-  width: min(75px, 100%);
-  height: min(35px, 100%);
-  padding: min(15px 10px);
+  width: min(85px, 100%);
+  padding: min(15px, 10px);
   background: transparent;
   border-radius: 5px;
   color: #fff;
@@ -146,7 +158,7 @@ body {
   gap: 2rem;
   width: min(190px, 100%);
   font-size: 15px;
-  padding: 10px;
+  padding: 15px;
   color: #fff;
 }
 
@@ -156,46 +168,67 @@ body {
   justify-content: center;
   font-size: 10px;
   font-weight: 500;
-  gap: 2rem;
-  padding: 5px;
+  gap: 3rem;
+  padding: 10px;
 }
 
-.currencies i {
-  color: #01161b;
-  font: 100px;
-  font-size: larger;
-  height: 30px;
-  width: 20px;
-  align-items: center;
-  justify-content: center;
-}
 .currency-one,
 .currency-two,
 .currency-three {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
   position: relative;
-  box-shadow: 10px 20px 30px #0a0a0a88;
+  background: #f9fafa60;
   border-radius: 5px;
-  color: #fff;
+  color: #000;
   padding: 5px;
+  width: fit-content;
 }
 
-.currency-container {
-  margin: 0 auto;
-  text-align: center;
-  height: 750px;
-  width: 800px;
-  background-color: #000b0b8e;
-  color: #0f0901;
-  border-radius: 10px;
-  border: 2px solid rgba(139, 69, 19, 0.623);
+.currencies h1 {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  color: #fcfcfc;
+}
+
+.currency-one .flag1 {
+  background-image: url(../../images/us.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+}
+
+.currency-two .flag2 {
+  background-image: url(../../images/eur.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+}
+
+.currency-three .flag3 {
+  background-image: url(../../images/kmer.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
 }
 
 .maincurrency-holder {
@@ -203,8 +236,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid #fff;
+  box-shadow: 2px 6px 10px #feffff60;
   padding: 5px;
+  border-radius: 10px;
+}
+
+.maincurrency-holder h1 {
+  color: #fff;
+  border: 0.5px solid #fff;
+  padding: min(5px, 100%);
+  border-radius: 10px;
 }
 
 .currency-header {
@@ -215,26 +256,41 @@ body {
 }
 
 .currency-container input {
-  height: 15vh;
-  width: 20vw;
-  border: 2px solid #5599f7;
-  border-radius: 5px;
-  background-color: black;
+  height: min(5vh, 100%);
+  width: (20vw, 100%);
+  border-radius: 20px;
   color: #eff2f4;
-  font-weight: 600;
-  font-style: oblique;
+  padding: 5px;
+  border: 0.5px solid #000;
   font-stretch: expanded;
-  font-size: larger;
   display: flex;
   align-items: center;
   justify-content: right;
 }
 
-/* .currency-container button {
-  height: fit-content;
-  width: fit-content;
-  padding: 5px;
-  background: #03fc39;
-  border-radius: 7px;
-  margin-top: 20%;
-} */
+.maincurrency-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.currency-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.currency-container button {
+  width: min(85px, 100%);
+  padding: min(15px, 10px);
+  background: transparent;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 3px 5px 10px #fcfafa65;
+  border: none;
+  cursor: pointer;
+}

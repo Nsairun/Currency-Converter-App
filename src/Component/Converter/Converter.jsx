@@ -5,12 +5,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import './Converter.css';
-import {
-  FcCurrencyExchange,
-  FcMoneyTransfer,
-  FcDownRight,
-  FcDownLeft,
-} from 'react-icons/fc';
+import { FcDownRight, FcDownLeft } from 'react-icons/fc';
 
 function Converter() {
   const [currency, setCurrency] = useState([]);
@@ -30,7 +25,7 @@ function Converter() {
   });
 
   const options = { method: 'GET', headers: { accept: 'application/json' } };
-  const ApiKey = '94f69ec9a6-dfb543855c-rppqdz';
+  const ApiKey = 'bff82f29b8-76ffb3d170-rxmyg9';
 
   useEffect(() => {
     fetch(
@@ -143,10 +138,7 @@ function Converter() {
               <h2>BALANCE</h2>
               <p>{amounts.USD.amnt}</p>
             </div>
-            <p>
-              <FcCurrencyExchange />
-              <FcMoneyTransfer />
-            </p>
+            <p>CHART SECTION</p>
             <button className="showform-btn" type="button" onClick={toggleForm}>
               topUP
             </button>

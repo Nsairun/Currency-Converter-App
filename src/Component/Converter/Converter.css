@@ -5,6 +5,14 @@ body {
   padding: 0;
 }
 
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  flex-direction: column;
+}
+
 .form-overlay {
   position: fixed;
   background-color: #cccccc54;

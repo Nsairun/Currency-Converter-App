@@ -1,23 +1,22 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import './Converter.css';
 import { FcDownRight, FcDownLeft } from 'react-icons/fc';
+import SelectDrop from '../SelectDrop/SelectDrop';
 
 function Converter() {
-  const [currency, setCurrency] = useState([]);
-  const [from, setFrom] = useState('USD');
-  const [to, setTo] = useState('');
+  const [currency, setCurrency] = useState({});
   const [showForm, setShowForm] = useState(true);
+  const [defaultCur, setDefaultCur] = useState('USD');
+  const [balance, setBalance] = useState(0);
 
   const toggleForm = () => {
     setShowForm((prev) => !prev);
   };
 
-  // const [output, setOutput] = useState(0);
   const [amounts, setAmounts] = useState({
     USD: { amnt: 0, sign: 'USD' },
     EUR: { amnt: 0, sign: 'EUR' },
@@ -25,7 +24,7 @@ function Converter() {
   });
 
   const options = { method: 'GET', headers: { accept: 'application/json' } };
-  const ApiKey = 'bff82f29b8-76ffb3d170-rxmyg9';
+  const ApiKey = 'e75ba0cc2b-4a89161914-ryrx8s';
 
   useEffect(() => {
     fetch(
@@ -37,15 +36,11 @@ function Converter() {
       .catch((err) => console.error('error ocured', err));
   }, []);
 
-  // function swappCurrency() {
-  //   const swapp = from;
-  //   setFrom(to);
-  //   setTo(swapp);
-  // }
-
   const handleSubmitTopUP = (AMT, currSign) => {
     const Holder = amounts;
     Holder[currSign].amnt += AMT;
+    console.log('holder: ', Holder);
+
     setAmounts(Holder);
   };
 
@@ -53,7 +48,8 @@ function Converter() {
     if (
       amount <= amounts[departureCurrency].amnt &&
       arrivalCurrency !== departureCurrency &&
-      amount >= 0
+      amount >= 0 &&
+      currency.results
     ) {
       const result =
         (amount / currency.results[departureCurrency]) *
@@ -61,25 +57,35 @@ function Converter() {
 
       const newAmount = amounts;
 
-      console.log('this results', typeof result);
-
       newAmount[departureCurrency].amnt -= amount;
       newAmount[arrivalCurrency].amnt += +result.toFixed(1);
 
-      console.log('this newAmount', newAmount[arrivalCurrency].amnt);
-
       setAmounts({ ...newAmount });
-    } else {
-      if (amount > amounts[departureCurrency].amnt) {
-        alert('ERROR! Insufficient balance');
-      }
-      if (arrivalCurrency === departureCurrency) {
-        alert('ERROR! Redundant conversion');
-      } else {
-        alert('ERROR! Will not convert negative funds');
-      }
+      return result;
     }
+    if (amount > amounts[departureCurrency].amnt) {
+      return 'ERROR! Insufficient balance';
+    }
+    if (arrivalCurrency === departureCurrency) {
+      return 'ERROR! Redundant conversion';
+    }
+    return 'ERROR! Will not convert negative funds';
   }
+
+  React.useEffect(() => {
+    if (currency.results) {
+      let res = amounts[defaultCur].amnt;
+      const arrCurry = Object.keys(amounts);
+
+      arrCurry.forEach((curr) => {
+        if (curr !== defaultCur) {
+          res += +handleConversion(curr, defaultCur, amounts[curr].amnt);
+        }
+      });
+
+      setBalance(res);
+    }
+  }, [defaultCur, currency]);
 
   return (
     <div className="currency-container">
@@ -93,7 +99,6 @@ function Converter() {
                 +e.target.elements.Amount.value,
                 e.target.elements.Currency.value
               );
-              console.log('this e', e);
               toggleForm();
             }}
           >
@@ -109,35 +114,28 @@ function Converter() {
                 id="Amount"
                 placeholder="Input Amount to topUP"
               />
-              <select id="Currency">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="XAF">XAF</option>
-              </select>
+              <SelectDrop id="Currency" />
             </div>
             <button type="submit">topUP</button>
           </form>
         </div>
       )}
 
-      <form
-        className="currency-container"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleConversion(
-            e.target.elements.from.value,
-            e.target.elements.to.value,
-            +e.target.elements.amount.value
-          );
-        }}
-      >
+      <div className="currency-container">
         <div id="balanceSection">
           <h1> CURRENCY-WALLET</h1>
           <div className="balance-holder">
-            <div className="balance">
-              <h2>BALANCE</h2>
-              <p>{amounts.USD.amnt}</p>
-            </div>
+            <form
+              className="balance"
+              onChange={(e) => setDefaultCur(e.target.value)}
+            >
+              <div className="total">
+                <h2>BALANCE</h2>
+                <p>{balance}</p>
+                <SelectDrop id="defaultCurr" />
+              </div>
+            </form>
+
             <p>CHART SECTION</p>
             <button className="showform-btn" type="button" onClick={toggleForm}>
               topUP
@@ -179,21 +177,32 @@ function Converter() {
             </h1>
           </div>
         </div>
-        <div className="maincurrency-holder">
-          <h1>Convert Below</h1>
+
+        <form
+          className="maincurrency-holder"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleConversion(
+              e.target.elements.from.value,
+              e.target.elements.to.value,
+              +e.target.elements.amount.value
+            );
+          }}
+        >
+          <h1>Convert and Transfer Below</h1>
           <p>
             <input id="amount" type="number" placeholder="amount" />
           </p>
           <div className="currency-header">
-            <input id="from" type="text" placeholder="from" />
-            <input id="to" type="text" placeholder="to" />
+            <SelectDrop id="from" />
+            <SelectDrop id="to" />
           </div>
           <div className="converter">
             <button type="submit">Convert</button>
             <p> </p>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

@@ -73,19 +73,19 @@ function Converter() {
   }
 
   React.useEffect(() => {
-    if (currency.results) {
-      let res = amounts[defaultCur].amnt;
-      const arrCurry = Object.keys(amounts);
+    const accountBalance = Object.keys(amounts)
+      .map(
+        (key) =>
+          currency.results &&
+          (amounts[key].amnt / currency.results[key]) *
+            currency.results[`${defaultCur}`]
+      )
+      .reduce((a, b) => a + b, 0);
 
-      arrCurry.forEach((curr) => {
-        if (curr !== defaultCur) {
-          res += +handleConversion(curr, defaultCur, amounts[curr].amnt);
-        }
-      });
-
-      setBalance(res);
-    }
-  }, [defaultCur, currency]);
+    setBalance(
+      () => !Number.isNaN(accountBalance) && Math.round(accountBalance)
+    );
+  }, [amounts.USD.amnt, amounts.EUR.amnt, amounts.XAF.amnt]);
 
   return (
     <div className="currency-container">

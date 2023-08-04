@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
-/* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-autofocus */
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import './Converter.css';
 import { FcDownRight, FcDownLeft } from 'react-icons/fc';
@@ -12,6 +11,7 @@ function Converter() {
   const [showForm, setShowForm] = useState(true);
   const [defaultCur, setDefaultCur] = useState('USD');
   const [balance, setBalance] = useState(0);
+  const [erro, setErro] = useState();
 
   const toggleForm = () => {
     setShowForm((prev) => !prev);
@@ -64,12 +64,13 @@ function Converter() {
       return result;
     }
     if (amount > amounts[departureCurrency].amnt) {
-      return 'ERROR! Insufficient balance';
+      setErro('ERROR! Insufficient balance');
     }
     if (arrivalCurrency === departureCurrency) {
-      return 'ERROR! Redundant conversion';
+      setErro('ERROR! Redundant conversion');
+    } else {
+      setErro('ERROR! Will not convert negative funds');
     }
-    return 'ERROR! Will not convert negative funds';
   }
 
   React.useEffect(() => {
@@ -130,6 +131,7 @@ function Converter() {
               onChange={(e) => setDefaultCur(e.target.value)}
             >
               <div className="total">
+                <h4>{erro}</h4>
                 <h2>BALANCE</h2>
                 <p>{balance}</p>
                 <SelectDrop id="defaultCurr" />

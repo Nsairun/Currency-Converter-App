@@ -13,6 +13,10 @@ body {
   flex-direction: column;
 }
 
+.total h4 {
+  color: #ff0000;
+}
+
 .form-overlay {
   position: fixed;
   background-color: #cccccc54;

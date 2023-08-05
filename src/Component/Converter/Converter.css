@@ -1,115 +1,324 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
 
-
 body {
-    margin: 0;
-    padding: 0;
+  margin: auto;
+  padding: 0;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  flex-direction: column;
+}
+
+.total h4 {
+  color: #ff0000;
+}
+
+.form-overlay {
+  position: fixed;
+  background-color: #cccccc54;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.form-overlay .topup-form {
+  background-color: #000;
+  position: relative;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 98vw;
+  max-width: 400px;
+  border-radius: 7px;
+  padding: 1rem 12px;
+}
+
+.topup-form label {
+  width: 100%;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.topup-form .input-div {
+  background-color: #161616a1;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.input-div input {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 10px;
+  margin: 0;
+  border: 2px solid grey;
+}
+
+.input-div select {
+  font-size: 1.2rem;
+  border: none;
+  width: 70px;
+}
+
+.topup-form button:nth-of-type(1) {
+  background-color: #fff;
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.topup-form button:nth-of-type(2) {
+  margin: 1rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 5px;
+  border: none;
+  color: #0905f8;
+  border-radius: 5px;
+  font-weight: 600;
+  align-self: flex-end;
+}
+
+/* topUP styles end here */
+
+.currency-container {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.116),
+    rgba(3, 3, 3, 0.973)
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: min(20px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 5px 10px #070707a9;
+  margin-bottom: 5%;
+}
+
+#balanceSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000000d0;
+  width: 100%;
+  top: 0;
+}
+
+#balanceSection h1 {
+  background: #fff;
+  color: #000;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.balance-holder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: min(400px, 100%);
+  gap: 1rem;
+  padding: 20px;
+}
+
+.balance p {
+  width: 100%;
+}
+
+#balanceSection button {
+  width: min(85px, 100%);
+  padding: min(15px, 10px);
+  background: transparent;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 3px 5px 10px #ffffffa9;
+  border: none;
+  cursor: pointer;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: min(190px, 100%);
+  font-size: 15px;
+  padding: 15px;
+  color: #fff;
 }
 
 .currencies {
-    display: flex;
-    /* background-color: #000; */
-    align-items: center;
-    justify-content: center;
-    font-size: larger;
-    font-weight: 700;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 500;
+  gap: 3rem;
+  padding: 10px;
 }
 
-.currencies i {
-    color: #151e20;
-    font:700;
-    font-size: larger;
-    height: 30px;
-    width: 20px;
-    align-items: center;
-    justify-content: center;
-}
-.currency-one {
-    background-image: url('../../images/dollar.jpg');
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 15vh;
-    width: 17vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 10px 20px 30px brown;
-    border-radius: 5px;
-}
-
-.currency-two {
-    background-image: url('../../images/Eur.jpg');
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 15vh;
-    width: 17vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 10px 20px 30px #08dafa;
-    border-radius: 5px;
-}
-
+.currency-one,
+.currency-two,
 .currency-three {
-    background-image: url('../../images/old-central-african-money-business-background_52793-892.jpg');
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 15vh;
-    width: 17vw;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 10px 20px 30px brown;
-    border-radius: 5px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  position: relative;
+  background: #12131331;
+  border-radius: 5px;
+  color: #000;
+  padding: 5px;
+  width: fit-content;
 }
 
-.currency-container {
+.currencies h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #fcfcfc;
+}
+
+.currency-one .flag1 {
+  background-image: url(../../images/us.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 50%;
+  width: 75%;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+}
+
+.currency-two .flag2 {
+  background-image: url(../../images/eur.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+}
+
+.currency-three .flag3 {
+  background-image: url(../../images/kmer.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+}
+
+.maincurrency-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 6px 10px #feffff60;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.maincurrency-holder h1 {
+  color: #fff;
+  border: 0.5px solid #fff;
+  padding: min(5px, 100%);
+  border-radius: 10px;
+}
+
+.currency-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.currency-container input {
+  height: min(5vh, 100%);
+  width: (20vw, 100%);
+  border-radius: 20px;
+  color: #0d0d0e;
+  padding: 5px;
+  border: 0.5px solid #000;
+  font-stretch: expanded;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.maincurrency-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.currency-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.currency-container button {
+  width: min(85px, 100%);
+  padding: min(15px, 10px);
+  background: transparent;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 3px 5px 10px #fcfafa65;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 770px) {
+  body {
     margin: 0 auto;
-    text-align: center;
-    height: 860px;
-    width: 1400px;
-    background-color: #000b0b;
-    color: #022b2b;
-    border-radius: 10%;
-    border: 2px solid saddlebrown;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url('../../images/chart-graph-business-finance.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+    padding: 0;
+  }
 
-.currency-header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.currency-container input  {
-    height: 5vh;
-    width: 15vw;
-    border: 2px solid #5599f7;
-    border-radius: 5px;
-    background-color: black;
-    color: #eff2f4;
-    font-weight: 600;
-    font-style: oblique;
-    font-stretch: expanded;
-    font-size: larger;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
-
-button {
-    height: 6vh;
-    width: 6vw;
-    background: #cdd7f7;
-    border-radius: 7px;
-    margin-top: 20%;
+  .currency-container,
+  .balanceSection,
+  .balance-holder,
+  .currencies,
+  .currency-header {
+    display: block;
+  }
+  
 }

@@ -68,9 +68,10 @@ function Converter() {
     }
     if (arrivalCurrency === departureCurrency) {
       setErro('ERROR! Redundant conversion');
-    } else {
-      setErro('ERROR! Will not convert negative funds');
+      return undefined;
     }
+    setErro('ERROR! Will not convert negative funds');
+    return undefined;
   }
 
   React.useEffect(() => {
@@ -86,7 +87,7 @@ function Converter() {
     setBalance(
       () => !Number.isNaN(accountBalance) && Math.round(accountBalance)
     );
-  }, [amounts.USD.amnt, amounts.EUR.amnt, amounts.XAF.amnt]);
+  }, [amounts.USD.amnt, amounts.EUR.amnt, amounts.XAF.amnt, defaultCur]);
 
   return (
     <div className="currency-container">
